@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Surprise Gift</title>
+    <style>
+        body {
+            background-color: #dba4ca;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #1d1a1a;
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #giftBox {
+            width: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+
+        #giftBox:hover {
+            transform: scale(1.1);
+        }
+
+        #message {
+            display: none;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: #d14d72;
+            font-weight: bold;
+            width: 35%;
+        }
+
+        @media screen and (max-width: 600px) {
+            #giftBox {
+                width: 150px;
+            }
+
+            #message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1> I Dare you touch me</h1>
+    <img id="giftBox" src="images/Photo 3.jpg" alt="Gift Box" />
+    <div id="message">💓💓You are my favourite Notification!!😉🫂💓
+        
+    
+    
+    (Yashika haa mattum crt panni kuduthuruviyama nalla pulla la😉..)</div>
+    <br>
+    <div id="message">(Yashika haa mattum crt panni kuduthuruviyama nalla pulla la😉..) </div>
+    <script>
+        const giftBox = document.getElementById('giftBox');
+        const message = document.getElementById('message');
+
+        giftBox.addEventListener('click', () => {
+            message.style.display = 'block';  // Show the message
+        });
+    </script>
+</body>
+
+</html>

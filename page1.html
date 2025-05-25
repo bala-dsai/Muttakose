@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Special day Countdown</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: url('your-background-image.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #fb8eda;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #1d1a1a;
+            display: grid;
+            grid-template-rows: auto;
+        }
+
+        .container {
+            text-align: center;
+            backdrop-filter: blur(8px);
+            background-color: rgb(255, 182, 193);
+            ;
+
+            padding: 30px 50px;
+            border: 5px solid pink;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+
+        }
+
+        .title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff7eb3);
+            -webkit-background-clip: text;
+
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .countdown {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px 25px;
+            border-radius: 15px;
+            min-width: 90px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            transition: transform 0.3s;
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .label {
+            font-size: 0.9rem;
+            color: #000000;
+            margin-top: 5px;
+        }
+
+        /* Optional: Confetti */
+        canvas#confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .content {
+            margin: 0;
+            padding: 0;
+            font-family: 'Great Vibes', cursive;
+            background: linear-gradient(to top right, #FFB6C1, #ffe0e0);
+            text-align: center;
+            color: #d14d72;
+            display: none;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 40px;
+        }
+
+        .message {
+            font-size: 1.5rem;
+            margin: 20px;
+            padding: 0 20px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .frame {
+            width: 200px;
+            height: 250px;
+            border: 10px solid #f5c6ec;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            background: #fff;
+        }
+
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .frame img:hover {
+            transform: scale(1.05);
+        }
+
+        .btn {
+            margin: 30px 0;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            background-color: #f8f8f8;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e35d8f;
+        }
+
+        audio {
+            display: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .message {
+                font-size: 1.2rem;
+            }
+
+            .frame {
+                width: 150px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="confetti"></canvas>
+
+    <div class="container">
+        <div class="title">Kuva Kuva day😁</div>
+        <div class="countdown">
+            <div class="box">
+                <div class="number" id="days">00</div>
+                <div class="label">Days</div>
+            </div>
+            <div class="box">
+                <div class="number" id="hours">00</div>
+                <div class="label">Hours</div>
+            </div>
+            <div class="box">
+                <div class="number" id="minutes">00</div>
+                <div class="label">Minutes</div>
+            </div>
+            <div class="box">
+                <div class="number" id="seconds">00</div>
+                <div class="label">Seconds</div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Happyyyyy Birthhhh dayyyyy diiii Muttakosseee😉🫂💎💓💓</h1>
+
+        <div class="message">
+            Happy Happy birthday dii muttakose!!💎,
+        </div>
+
+        <div class="gallery">
+            <div class="frame">
+                <img src="images/Photo 1.jpg" alt="Podusu😅">
+            </div>
+            <div class="frame">
+                <img src="images/Photo 2.png" alt="Memory 2">
+            </div>
+        </div>
+        <a href="surprise.html" class="btn" id="surpriseBtn"> secret message😉</a>
+
+        <!-- Background music (optional) -->
+        <audio autoplay loop>
+            <source src="birthday-song.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <script>
+        const targetDate = new Date("May 26, 2025 00:00:00").getTime(); // Change this to desired date
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance <= 0) {
+                document.querySelector(".content").style.display = "block";
+                document.querySelector(".container").style.display = "none";
+                document.querySelectorAll(".number").forEach(el => el.textContent = "00");
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = String(days).padStart(2, '0');
+            document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+
+    <!-- 🎊 Optional Confetti Effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        const duration = 15 * 1000;
+        const animationEnd = Date.now() + duration;
+        const confettiCanvas = document.getElementById('confetti');
+
+        const confettiInterval = setInterval(() => {
+            if (Date.now() > animationEnd) return clearInterval(confettiInterval);
+            confetti({
+                particleCount: 3,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: ['#bb0000', '#ffffff']
+            });
+            confetti({
+                particleCount: 3,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: ['#bb0000', '#ffffff']
+            });
+        }, 250);
+    </script>
+</body>
+
+</html>
